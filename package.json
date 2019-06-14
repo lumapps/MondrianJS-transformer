@@ -1,0 +1,19 @@
+{
+  "name": "mondrianjs-transformer",
+  "version": "0.0.1",
+  "description": "Tools to generate remote component the MondrianJS ecosystem",
+  "main": "index.js",
+  "author": "Guillaume Nachury",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/standalone": "^7.4.5",
+    "minimist": "^1.2.0",
+    "terser": "^4.0.0"
+  },
+  "scripts": {
+    "start": "babel-node index.js"
+  }
+}
