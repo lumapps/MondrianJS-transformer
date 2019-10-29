@@ -17,6 +17,7 @@ export default {
       exclude: "node_modules/**",
       presets: ["@babel/env", "@babel/preset-react"]
     }),
+    url(),
     svgr()
   ]
 };
