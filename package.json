@@ -14,6 +14,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/standalone": "^7.4.5",
     "@svgr/rollup": "^4.3.3",
+    "http-server": "^0.11.1",
     "minimist": "^1.2.0",
     "rollup": "^1.23.1",
     "rollup-plugin-babel": "^4.3.2",
@@ -21,6 +22,8 @@
     "terser": "^4.0.0"
   },
   "scripts": {
+    "make": "rollup -c",
+    "serve": "http-server Transformed -a localhost -p 6916 --cors='Access-Control-Allow-Origin'",
     "start": "babel-node index.js"
   },
   "devDependencies": {
