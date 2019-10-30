@@ -1,6 +1,18 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
-  "plugins": ["@babel/plugin-proposal-class-properties"],
-  "sourceMaps": "inline",
-  "retainLines": true
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": "last 2 major version, ie >= 11"
+      }
+    ],
+    [
+      "@babel/preset-react"
+    ]
+  ],
+  "retainLines": true,
+  "sourceMaps": "inline"
 }
