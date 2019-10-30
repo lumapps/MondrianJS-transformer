@@ -1,14 +1,32 @@
-import * as Babel from '@babel/standalone';
 import fs from 'fs';
 import path from 'path';
-import Terser from 'terser';
+import { rollup } from 'rollup';
+import { readFileSync } from 'jsonfile';
+import rollupConfig from './rollup.config.js';
 
-import cfg from './config.json';
+const config = readFileSync('./config.json')
 
-const allowedExtension = cfg.allowedExtensions;
+const { allowedExtensions, compress, outputExt, outputDir, inputDir, verbose } = config;
 
+/**
+ * List all directories in source folder
+ *
+ * @param {string} sourceFolder
+ */
+const getDirectories = (sourceFolder) =>
+    fs
+        .readdirSync(sourceFolder, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory())
+        .map((dirent) => dirent.name);
+
+/**
+ * Return whehter the file extension is allowed or not
+ *
+ * @param  {string}  file The file to check
+ * @return {boolean} Whether the file extension is allowed or not
+ */
 const hasValidExtension = (file) => {
-    for (const ext of allowedExtension) {
+    for (const ext of allowedExtensions) {
         if (file.substr(file.length - ext.length) === ext) {
             return true;
         }
@@ -17,51 +35,41 @@ const hasValidExtension = (file) => {
     return false;
 };
 
-const changeFileExtension = (file, newExt) => {
-    return file.substring(0, file.lastIndexOf('.')) + newExt;
-};
+const directories = getDirectories(inputDir);
 
-const argv = require('minimist')(process.argv.slice(2));
+directories.forEach((directory) => {
+    const directoryPath = path.join(__dirname, inputDir, directory);
+    try {
+        const extConfig = readFileSync(`${directoryPath}/extension.config.json`);
+        const { extensionComponents } = extConfig;
 
-if (argv.verbose) {
-    cfg.verbose = argv.verbose === true;
-}
+        extensionComponents.forEach((component) => {
+            const { file, componentName } = component;
 
-if (argv['skip-compression']) {
-    cfg.compress = true;
-} else {
-    cfg.compress = false;
-}
-
-const directoryPath = path.join(__dirname, cfg.inputDir);
-fs.readdir(directoryPath, (err, files) => {
-    if (err) {
-        return console.log(`Error ${err}`);
-    }
-
-    files.forEach((file) => {
-        if (!hasValidExtension(file)) {
-            return;
-        }
-
-        const fc = fs.readFileSync(path.join(directoryPath, file), 'utf8');
-
-        let _transformedCode = Babel.transform(fc, {
-            presets: ['react', 'es2015'],
-        }).code;
-
-        if (cfg.compress) {
-            _transformedCode = Terser.minify(_transformedCode).code;
-        }
-
-        const toFileName = changeFileExtension(file, cfg.outputExt || '.out');
-
-        fs.writeFile(path.join(__dirname, cfg.outputDir, toFileName), _transformedCode, (writeErr) => {
-            if (writeErr) {
-                throw writeErr;
+            if (!hasValidExtension(file)) {
+                throw 'Unauthorized extension';
             }
-        });
 
-        cfg.verbose && console.log(`${file} to ${toFileName} ✅`);
-    });
+            const { plugins, output } = rollupConfig;
+            const input = `${directoryPath}/${file}`;
+
+            const inputOptions = {
+                input,
+                plugins,
+            };
+
+            const outputOptions = {
+                file: path.join(__dirname, outputDir, `${componentName}${outputExt}`),
+                format: output.format,
+            };
+
+            rollup(inputOptions).then((bundle) => {
+                bundle.generate(outputOptions).then(() => {
+                    bundle.write(outputOptions);
+                });
+            });
+        });
+    } catch (exception) {
+        console.error(exception);
+    }
 });
