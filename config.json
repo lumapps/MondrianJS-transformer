@@ -1,7 +1,7 @@
 {
-  "allowedExtensions" : ["jsx", "js"],
-  "outputExt" : ".mdr",
-  "outputDir" : "Transformed",
-  "inputDir" : "Candidates",
-  "verbose" : true
+    "allowedExtensions": ["jsx", "js"],
+    "outputExt": ".mdr",
+    "outputDir": "Transformed",
+    "inputDir": "Candidates",
+    "verbose": true
 }
