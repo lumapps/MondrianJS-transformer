@@ -14,6 +14,7 @@ export default {
             extensions: ['.css'],
         }),
         babel({
+            // eslint-disable-next-line no-sync
             ...JSON.parse(require('fs').readFileSync('.babelrc', 'utf8')),
             exclude: 'node_modules/**',
             presets: ['@babel/env', '@babel/preset-react'],
