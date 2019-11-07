@@ -4,7 +4,7 @@ module.exports = {
         es6: true,
         node: true,
     },
-    extends: ['standard'],
+    extends: ['standard', 'plugin:prettier/recommended'],
     globals: {
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
@@ -16,7 +16,7 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module',
     },
-    plugins: ['react'],
+    plugins: ['prettier', 'react', 'no-useless-assign', 'unicorn'],
     rules: {
         'accessor-pairs': [
             'error',
@@ -915,18 +915,6 @@ module.exports = {
         radix: ['error', 'always'],
         'require-atomic-updates': 'error',
         'require-await': 'error',
-        'require-jsdoc': [
-            'off',
-            {
-                require: {
-                    ArrowFunctionExpression: false,
-                    ClassDeclaration: true,
-                    FunctionDeclaration: true,
-                    FunctionExpression: false,
-                    MethodDefinition: true,
-                },
-            },
-        ],
         'require-unicode-regexp': 'off',
         'require-yield': 'error',
         'rest-spread-spacing': ['error', 'never'],
@@ -1203,37 +1191,6 @@ module.exports = {
         'no-useless-assign/no-useless-assign': 'error',
 
         'prettier/prettier': 'error',
-
-        'require-jsdoc-except/require-jsdoc': [
-            'error',
-            {
-                require: {
-                    ArrowFunctionExpression: false,
-                    ClassDeclaration: true,
-                    FunctionDeclaration: true,
-                    FunctionExpression: false,
-                    MethodDefinition: true,
-                },
-                ignore: [
-                    '/.*Component/',
-                    '/.*Config/',
-                    '/.*Controller/',
-                    '/.*Directive/',
-                    '/.*Factory/',
-                    '/.*Filter/',
-                    '/.*Run/',
-                    '/.*Service/',
-                    'compile',
-                    'componentDidMount',
-                    'componentDidUpdate',
-                    'componentWillUnmount',
-                    'constructor',
-                    'getDerivedStateFromProps',
-                    'link',
-                    'render',
-                ],
-            },
-        ],
 
         'unicorn/catch-error-name': [
             'error',
