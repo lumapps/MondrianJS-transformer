@@ -93,8 +93,9 @@ directories.forEach((directory) => {
                 format: output.format,
             };
 
-            generateBundle(inputOptions, outputOptions);
-            verbose && console.log(`    ${component.file} successfully bundled ..........\u2705`);
+            generateBundle(inputOptions, outputOptions).then(() => {
+                verbose && console.log(`    ${component.file} successfully bundled ..........\u2705`);
+            });
         });
     } catch (exception) {
         console.error(`Error : ${exception}`);
