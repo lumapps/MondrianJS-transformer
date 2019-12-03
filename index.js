@@ -10,6 +10,7 @@ const config = readFileSync('./config.json');
 const { allowedExtensions, outputExt, outputDir, inputDir, verbose } = config;
 
 const EXTENSION_CONFIG_FILE = 'extension.config.json';
+
 /**
  * List all directories in source folder.
  *
@@ -71,8 +72,8 @@ directories.forEach((directory) => {
         verbose && console.log(`Working on ${directory} extension ..........\u23F3`);
 
         extensionComponents.forEach((component) => {
-            verbose && console.log(`    Loading ${component.file} [${component.componentName}] ..........\u23F3`);
-            const { file, componentName } = component;
+            verbose && console.log(`    Loading ${component.file} [${component.type}] ..........\u23F3`);
+            const { file, type } = component;
 
             if (!hasValidExtension(file)) {
                 // eslint-disable-next-line no-throw-literal
@@ -89,7 +90,7 @@ directories.forEach((directory) => {
             };
 
             const outputOptions = {
-                file: path.join(__dirname, outputDir, directory, `${componentName}${outputExt}`),
+                file: path.join(__dirname, outputDir, directory, `${type}${outputExt}`),
                 format: output.format,
             };
 
@@ -101,5 +102,5 @@ directories.forEach((directory) => {
         console.error(`Error : ${exception}`);
     }
 
-    verbose && console.log('All done ..........\u23F3');
+    verbose && console.log('All done ..........\u2705');
 });

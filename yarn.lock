@@ -2765,6 +2765,11 @@ loose-envify@^1.0.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lum-sdk@^0.0.41:
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/lum-sdk/-/lum-sdk-0.0.41.tgz#d89a7c53766b85e57dc45c2cd39a44e9156da589"
+  integrity sha512-TNZW1S+/VAPkmnCLZ2fthHj+aykIlBnNQa+xORHUK0XL180G9QXUpVZlRsw1E6C3u6jQblgiMpii3lmmfdo2fQ==
+
 magic-string@^0.25.2:
   version "0.25.4"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.4.tgz#325b8a0a79fc423db109b77fd5a19183b7ba5143"
