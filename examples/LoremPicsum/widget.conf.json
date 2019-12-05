@@ -1,0 +1,9 @@
+{
+    "name": "Lorem Picsum",
+    "description": "Display image from Loram Picsum API",
+    "icon": "image",
+    "modules": {
+        "content": "widget",
+        "settings": "widget-settings"
+    }
+}
