@@ -1,15 +1,16 @@
 /* eslint-disable no-console */
 import fs from 'fs';
 import path from 'path';
+import includes from 'lodash/includes';
 import { rollup } from 'rollup';
 import { readFileSync } from 'jsonfile';
 
 import rollupConfig from './rollup.config';
 
 const config = readFileSync('./config.json');
-const { allowedExtensions, outputExt, outputDir, inputDir, verbose } = config;
+const { allowedExtensions, allowedComponentTypes, outputExt, outputDir, inputDir, verbose } = config;
 
-const EXTENSION_CONFIG_FILE = 'extension.config.json';
+const EXTENSION_CONFIG_FILE = 'extension.config.json'
 
 /**
  * List all directories in source folder.
@@ -39,6 +40,16 @@ const hasValidExtension = (file) => {
 
     return false;
 };
+
+/**
+ * Return whether the componet type is a valid type.
+ *
+ * @param  {string}  type The component type.
+ * @return {boolean} Whether the typeis valid ornot.
+ */
+const hasValidComponentType = (type) => {
+    return includes(allowedComponentTypes, type);
+}
 
 /**
  * Generate the bundle.
@@ -78,6 +89,11 @@ directories.forEach((directory) => {
             if (!hasValidExtension(file)) {
                 // eslint-disable-next-line no-throw-literal
                 throw 'Unauthorized extension';
+            }
+
+            if (!hasValidComponentType(type)) {
+                // eslint-disable-next-line no-throw-literal
+                throw 'Unauthorized component type';
             }
 
             const { plugins, output } = rollupConfig;

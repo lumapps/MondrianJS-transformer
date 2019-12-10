@@ -1,6 +1,7 @@
 {
     "allowedExtensions": ["jsx", "js"],
-    "outputExt": ".mdr",
+    "allowedComponentTypes": ["WidgetContent", "WidgetSettings", "ExtensionGlobalSettings"],
+    "outputExt": ".lum",
     "outputDir": "Transformed",
     "inputDir": "Candidates",
     "verbose": true
