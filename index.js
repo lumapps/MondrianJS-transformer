@@ -42,10 +42,10 @@ const hasValidExtension = (file) => {
 };
 
 /**
- * Return whether the componet type is a valid type.
+ * Return whether the component type is a valid type.
  *
  * @param  {string}  type The component type.
- * @return {boolean} Whether the typeis valid ornot.
+ * @return {boolean} Whether the type is valid or not.
  */
 const hasValidComponentType = (type) => {
     return includes(allowedComponentTypes, type);
@@ -87,13 +87,11 @@ directories.forEach((directory) => {
             const { file, type } = component;
 
             if (!hasValidExtension(file)) {
-                // eslint-disable-next-line no-throw-literal
-                throw 'Unauthorized extension';
+                throw new Error('Unauthorized extension');
             }
 
             if (!hasValidComponentType(type)) {
-                // eslint-disable-next-line no-throw-literal
-                throw 'Unauthorized component type';
+                throw new Error('Unauthorized component type');
             }
 
             const { plugins, output } = rollupConfig;
