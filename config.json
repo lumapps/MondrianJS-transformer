@@ -1,8 +1,15 @@
 {
-    "allowedExtensions": ["jsx", "js"],
-    "allowedComponentTypes": ["WidgetContent", "WidgetSettings", "ExtensionGlobalSettings"],
-    "outputExt": ".lum",
-    "outputDir": "Transformed",
-    "inputDir": "Candidates",
-    "verbose": true
+  "allowedExtensions": [
+    "jsx",
+    "js"
+  ],
+  "allowedComponentTypes": [
+    "WidgetContent",
+    "WidgetSettings",
+    "ExtensionGlobalSettings"
+  ],
+  "outputExt": ".lum",
+  "outputDir": "Transformed",
+  "inputDir": "Candidates",
+  "verbose": true
 }

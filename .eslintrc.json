@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "prettier",
+    "eslint-plugin-prettier",
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "svg": "always"
+      }
+    ],
+    "import/no-unresolved": "off",
+    "react/jsx-props-no-spreading": "off"
+  },
+  "reportUnusedDisableDirectives": true,
+  "env": {
+    "jest": true
+  }
+}
