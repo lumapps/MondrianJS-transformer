@@ -1,0 +1,28 @@
+{
+    "description": {
+        "en": "Display a random image",
+        "fr": "Affiche une image aléatoire"
+    },
+    "extensionComponents": [
+        {
+            "file": "widget.js",
+            "type": "WidgetContent",
+            "version": "0.0.1"
+        },
+        {
+            "file": "widget-settings.js",
+            "type": "WidgetSettings",
+            "version": "0.0.1"
+        },
+        {
+            "file": "global-settings.js",
+            "type": "ExtensionGlobalSettings",
+            "version": "0.0.1"
+        }
+    ],
+    "name": {
+        "en": "Lorem Picsum",
+        "fr": "Lorem Picsum"
+    },
+    "type": "widget"
+}

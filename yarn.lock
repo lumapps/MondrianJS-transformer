@@ -2765,10 +2765,15 @@ loose-envify@^1.0.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-lum-sdk@^0.0.41:
-  version "0.0.41"
-  resolved "https://registry.yarnpkg.com/lum-sdk/-/lum-sdk-0.0.41.tgz#d89a7c53766b85e57dc45c2cd39a44e9156da589"
-  integrity sha512-TNZW1S+/VAPkmnCLZ2fthHj+aykIlBnNQa+xORHUK0XL180G9QXUpVZlRsw1E6C3u6jQblgiMpii3lmmfdo2fQ==
+lum-sdk@^0.0.42:
+  version "0.0.42"
+  resolved "https://registry.yarnpkg.com/lum-sdk/-/lum-sdk-0.0.42.tgz#881f2a9298d2af629a3dfece77e957c1b34b94b5"
+  integrity sha512-0A7duSnWhKo7LmGWmU60utlAzhUyk548loKfc8+qoE2u2eifPd5eLSv3gi2G5MlBktMLy+tCQHlGCO6gqHPCNA==
+
+lumapps-sdk-js@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/lumapps-sdk-js/-/lumapps-sdk-js-0.0.2.tgz#7686cb4099ed8cbe3cfcc04c90f719a609b79be9"
+  integrity sha512-gyhx1a+GaE5ykuu4CnFa7oaaKMZ4w6Q99vyt9lp5yLvX6HYOqFierSF7Hs3cKOeDa7KiBtvmARZTAV1vOVZ7vQ==
 
 magic-string@^0.25.2:
   version "0.25.4"
