@@ -40,7 +40,6 @@
         "terser": "^4.0.0"
     },
     "scripts": {
-        "make": "rollup -c",
         "serve": "http-server Transformed -a localhost -p 6916 --cors='Access-Control-Allow-Origin'",
         "start": "babel-node index.js"
     },
