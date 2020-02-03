@@ -1,24 +1,23 @@
-import { shape, bool, func, string,isRequired } from 'prop-types';
+import { shape, bool, func, string } from 'prop-types';
 
 /** The prop types definition for the widget channel list */
 export const widgetPicsumType = {
     value: shape({
-        size: string,
-        useGreyScale: bool,
+        blur: string,
         imageId: string,
+        size: string,
         useBlur: bool,
-        blur: string
+        useGreyScale: bool,
     }),
 };
 
 export const widgetPicsumSettingsType = {
     exportProp: func.isRequired,
     properties: shape({
-        size: string,
-        useGreyScale: bool,
+        blur: string,
         imageId: string,
+        size: string,
         useBlur: bool,
-        blur: string
+        useGreyScale: bool,
     }),
 };
-

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TextField, Switch } from '@lumx/react';
-import { widgetPicsumSettingsType } from './types';
 
 /**
- * Render the widget Picsum setttings form.
+ * Render the widget Picsum settings form.
  *
  * @param {Object} props The settings component properties.
  */
-const PicsumWidgetSettings = ({ properties, exportProp }) => {
+const PicsumWidgetSettings = ({ exportProp, properties }) => {
     const [size, setSize] = useState(properties.size);
     const [imageId, setImageId] = useState(properties.imageId);
     const [useGreyScale, setUseGreyScale] = useState(properties.useGreyScale);
@@ -48,6 +47,7 @@ const PicsumWidgetSettings = ({ properties, exportProp }) => {
         setUseBlur(value);
 
         properties.useBlur = value;
+
         if (!value) {
             properties.blur = undefined;
         }
@@ -76,7 +76,7 @@ const PicsumWidgetSettings = ({ properties, exportProp }) => {
             </Switch>
 
             <Switch className="mt+ ml" checked={useBlur} onToggle={changeUseBlurHandler}>
-                Display a blury image
+                Display a blurry image
             </Switch>
 
             {useBlur && <TextField className="mt0 ml" label="Blur value" value={blur} onChange={changeBlurHandler} />}

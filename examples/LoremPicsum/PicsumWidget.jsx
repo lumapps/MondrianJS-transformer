@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Lumapps from 'lumapps';
 import { Notification, NotificationType } from '@lumx/react';
+import Lumapps from 'lumapps';
+
 import './PicsumWidget.css';
 
 /**
@@ -40,21 +41,21 @@ const PicsumWidget = ({ value }) => {
         <div className="widget-picsum">
             {!error && user && (
                 <div className="widget-picsum__user widget-picsum-user">
-                    <img className="widget-picsum-user__picture" src={user.apiProfile.profilePicture}/>
+                    <img className="widget-picsum-user__picture" src={user.apiProfile.profilePicture} />
                     <div className="widget-picsum-user__name">{user.fullName}</div>
                 </div>
             )}
             {error && (
                 <Notification
+                    isOpen
                     type={NotificationType.error}
-                    content="An error occured while retrieving user"
-                    isOpen={true}
+                    content="An error occurred while retrieving user"
                     actionLabel="Dismiss"
-                    actionCallback={setError}/>
-
+                    actionCallback={setError}
+                />
             )}
 
-            <img className="widget-picsum__image" src={url} alt="Aternative Text" />
+            <img className="widget-picsum__image" src={url} alt="Alternative Text" />
         </div>
     );
 };
