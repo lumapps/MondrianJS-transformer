@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Lumapps from 'lumapps';
+import { Lumapps } from 'lumapps-sdk-js';
 import { Notification, NotificationType } from '@lumx/react';
-
 import './PicsumWidget.css';
 
 /**
@@ -9,27 +8,29 @@ import './PicsumWidget.css';
  *
  * @param {Object} value The different settings to apply to the displayed image.
  */
-const PicsumWidget = ({ value }) => {
+const PicsumWidget = ({ value, globalValue = {} }) => {
     const [url, setUrl] = useState();
     const [user, setUser] = useState();
     const [error, setError] = useState();
     const { blur, imageId, size, useBlur, useGreyScale } = value;
+    const { baseUrl = '' } = globalValue;
 
     useEffect(() => {
         const lumapps = new Lumapps();
-        lumapps.getConnectedUser()
+        lumapps
+            .getConnectedUser()
             .then((user) => {
                 setUser(user);
             })
-            .catch((err) => {
-                console.log(err);
-                setError(err);
-            });
 
+            .catch((exception) => {
+                console.log(exception);
+                setError(exception);
+            });
     }, []);
 
     useEffect(() => {
-        let link = 'https://picsum.photos/';
+        let link = baseUrl || 'https://picsum.photos/';
 
         link = imageId && imageId !== '' ? `${link}id/${imageId}/${size}` : `${link}${size}`;
         link = useGreyScale ? `${link}?grayscale` : link;
@@ -39,11 +40,21 @@ const PicsumWidget = ({ value }) => {
         setUrl(link);
     }, [blur, imageId, size, useBlur, useGreyScale, url]);
 
+    const getProfilePicture = (apiProfile) => {
+        if (apiProfile.thumbnail && apiProfile.thumbnail.mimeType && apiProfile.thumbnail.photoData) {
+            return `data:${apiProfile.thumbnail.mimeType};base64,${apiProfile.thumbnail.photoData
+                .replace(/_/g, '/')
+                .replace(/-/g, '+')}`;
+        }
+
+        return apiProfile.profilePicture;
+    };
+
     return (
         <div className="widget-picsum">
             {!error && user && (
                 <div className="widget-picsum__user widget-picsum-user">
-                    <img className="widget-picsum-user__picture" src={user.apiProfile.profilePicture} />
+                    <img className="widget-picsum-user__picture" src={getProfilePicture(user.apiProfile)} />
                     <div className="widget-picsum-user__name">{user.fullName}</div>
                 </div>
             )}

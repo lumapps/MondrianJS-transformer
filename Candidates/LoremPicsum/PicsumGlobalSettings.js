@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { TextField } from '@lumx/react';
+import React, { useState, useEffect } from 'react';
+import { TextField, Switch } from '@lumx/react';
+import { widgetPicsumGlobalSettingsType } from './types';
 
 /**
- * Render the widget Picsum settings form.
+ * Render the widget Picsum setttings form.
  *
  * @param {Object} props The settings component properties.
  */

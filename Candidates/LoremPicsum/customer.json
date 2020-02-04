@@ -1,0 +1,13 @@
+{
+    "customers": [
+        {
+            "name":"Borso",
+            "uid": "ca4ecf68-01b9-4025-890b-e496f15935f2"
+        },
+        {
+            "name":"Infocus",
+            "uid": "a7a98d16-ea63-4096-bd93-ac1145596ef3"
+        }
+    ]
+}
+

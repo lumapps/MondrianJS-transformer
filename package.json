@@ -28,6 +28,7 @@
         "http-server": "^0.11.1",
         "jsonfile": "^5.0.0",
         "lum-sdk": "^0.0.42",
+        "lumapps-sdk-js": "^0.0.2",
         "minimist": "^1.2.0",
         "prettier": "^1.18.2",
         "prettier-eslint": "^9.0.0",
@@ -39,7 +40,6 @@
         "terser": "^4.0.0"
     },
     "scripts": {
-        "make": "rollup -c",
         "serve": "http-server Transformed -a localhost -p 6916 --cors='Access-Control-Allow-Origin'",
         "start": "babel-node index.js"
     },
