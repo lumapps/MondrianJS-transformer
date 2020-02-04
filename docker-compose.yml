@@ -1,0 +1,13 @@
+version: "3.2"
+
+services:
+  mondrian:
+    image: lumapps/mondrian
+    build: .
+    volumes:
+      - type: bind
+        source: ./examples
+        target: /app/src
+    ports:
+      - "6916:6916"
+    restart: unless-stopped
