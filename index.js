@@ -10,7 +10,7 @@ import rollupConfig from './rollup.config';
 const config = readFileSync('./config.json');
 const { allowedExtensions, allowedComponentTypes, outputExt, outputDir, inputDir, verbose } = config;
 
-const EXTENSION_CONFIG_FILE = 'extension.config.json'
+const EXTENSION_CONFIG_FILE = 'extension.config.json';
 
 /**
  * List all directories in source folder.
@@ -49,7 +49,7 @@ const hasValidExtension = (file) => {
  */
 const hasValidComponentType = (type) => {
     return includes(allowedComponentTypes, type);
-}
+};
 
 /**
  * Generate the bundle.

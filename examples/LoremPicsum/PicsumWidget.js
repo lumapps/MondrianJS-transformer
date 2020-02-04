@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Lumapps from 'lumapps';
 import { Notification, NotificationType } from '@lumx/react';
+
 import './PicsumWidget.css';
 
 /**
@@ -16,14 +17,16 @@ const PicsumWidget = ({ value }) => {
 
     useEffect(() => {
         const lumapps = new Lumapps();
-        lumapps.getConnectedUser().then((user) => {
-            setUser(user);
-        }).catch((err) => {
-            console.log(err);
-            setError(err);
-        });
+        lumapps.getConnectedUser()
+            .then((user) => {
+                setUser(user);
+            })
+            .catch((err) => {
+                console.log(err);
+                setError(err);
+            });
 
-    }, [])
+    }, []);
 
     useEffect(() => {
         let link = 'https://picsum.photos/';
@@ -40,7 +43,7 @@ const PicsumWidget = ({ value }) => {
         <div className="widget-picsum">
             {!error && user && (
                 <div className="widget-picsum__user widget-picsum-user">
-                    <img className="widget-picsum-user__picture" src={user.apiProfile.profilePicture}/>
+                    <img className="widget-picsum-user__picture" src={user.apiProfile.profilePicture} />
                     <div className="widget-picsum-user__name">{user.fullName}</div>
                 </div>
             )}
@@ -50,8 +53,8 @@ const PicsumWidget = ({ value }) => {
                     content="An error occured while retrieving user"
                     isOpen={true}
                     actionLabel="Dismiss"
-                    actionCallback={setError}/>
-
+                    actionCallback={setError}
+                />
             )}
 
             <img className="widget-picsum__image" src={url} alt="Aternative Text" />
