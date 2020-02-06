@@ -5,7 +5,7 @@
         "WidgetSettings",
         "ExtensionGlobalSettings"
     ],
-    "outputExt": ".lum",
+    "outputExt": ".mjs",
     "outputDir": "Transformed",
     "inputDir": "Candidates",
     "verbose": true
