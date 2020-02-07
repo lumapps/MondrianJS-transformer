@@ -4,7 +4,6 @@ import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
 
 export default {
-    input: 'Candidates/index.js',
     output: {
         format: 'esm',
     },
