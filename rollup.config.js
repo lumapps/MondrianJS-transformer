@@ -4,9 +4,7 @@ import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
 
 export default {
-    input: 'Candidates/index.js',
     output: {
-        file: 'Transformed/Widget.mdr',
         format: 'amd',
     },
     plugins: [
