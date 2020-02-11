@@ -6,8 +6,11 @@ services:
     build: .
     volumes:
       - type: bind
-        source: ./examples
-        target: /app/src
+        source: ./Candidates
+        target: /src/Candidates
+      - type: bind
+        source: ./Transformed
+        target: /src/Transformed
     ports:
       - "6916:6916"
     restart: unless-stopped
